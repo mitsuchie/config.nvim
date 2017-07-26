@@ -1,0 +1,72 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+hook_add = '''
+  augroup myvimrc
+    autocmd colorscheme hybrid hi LineNr     ctermfg=244 guifg=#979ba1
+    autocmd colorscheme hybrid hi CursorLine ctermbg=237 guibg=#383a3e
+  augroup END
+
+  try
+    colorscheme hybrid
+    set background=dark
+  catch
+  endtry
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+  let g:lightline = {
+  \   'colorscheme': 'wombat',
+  \   'subseparator': { 'left': '>', 'right': '<' }
+  \ }
+'''
+
+[[plugins]]
+repo = 'kana/vim-submode'
+hook_add = '''
+  let g:submode_timeout = 0
+  let g:submode_keep_leaving_key = 1
+  let g:submode_keyseqs_to_leave = ['s', 'q']
+
+  function! RegisterSubmode(name, mode, enter, map, key)
+    call submode#enter_with(a:name, a:mode, '', a:enter, a:key)
+    call submode#map(a:name, a:mode, '', a:map, a:key)
+  endfunction
+
+  try
+    call RegisterSubmode('resizex', 'n', 'sdl', 'l', '<C-w>>')
+    call RegisterSubmode('resizex', 'n', 'sdh', 'h', '<C-w><')
+    call RegisterSubmode('resizey', 'n', 'sdj', 'j', '<C-w>+')
+    call RegisterSubmode('resizey', 'n', 'sdk', 'k', '<C-w>-')
+    call RegisterSubmode('move', 'nv', 'sj', 'j', '5j')
+    call RegisterSubmode('move', 'nv', 'sk', 'k', '5k')
+  catch
+  endtry
+'''
+
+# [[plugins]]
+# repo = 'thinca/vim-fontzoom'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'osyo-manga/vim-brightest'
+hook_add = '''
+  let g:brightest#highlight = { 'group' : 'BrightestUnderline' }
+'''
+
+[[plugins]]
+repo = 'AndrewRadev/switch.vim'
+hook_add = """
+  nnoremap - :<C-u>Switch<CR>
+  let g:switch_custom_definitions = [{ '''\(.\{-}\)''': '"\1"', '"\(.\{-}\)"': '''\1'''}]
+"""
+
+[[plugins]]
+repo = 'tpope/vim-surround'
