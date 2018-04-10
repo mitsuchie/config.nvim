@@ -1,10 +1,3 @@
-set encoding=utf-8
-scriptencoding utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8,cp932,iso-2022-jp,sjis,euc-jp
-set fileformat=unix
-set fileformats=unix,dos,mac
-
 " =============================================================================
 " autocmdを初期化
 " =============================================================================
@@ -81,15 +74,30 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 nnoremap t <C-t>
 " タブで移動
 nnoremap <TAB> <C-w>w
+" タブ移動
+nnoremap <silent> } gt
+nnoremap <silent> { gT
+" ESC
+tnoremap <silent> <ESC> <C-\><C-n>
 
 " =============================================================================
-" キャッシュ
+" cache
 " =============================================================================
+let g:neosnippet#snippets_directory = s:home.'/snippets/'
 let g:neosnippet#data_directory  = s:home.'/cache/neosnippet/'
 let g:neomru#directory_mru_path  = s:home.'/cache/neomru/directory'
 let g:neomru#file_mru_path       = s:home.'/cache/neomru/file'
 let &undodir = s:home.'/cache/undo'
 let &viminfo = &viminfo.',n'.s:home.'/cache/_viminfo'
+
+" =============================================================================
+" colorscheme
+" =============================================================================
+try
+  colorscheme hybrid
+  set background=dark
+catch
+endtry
 
 " =============================================================================
 filetype plugin indent on
