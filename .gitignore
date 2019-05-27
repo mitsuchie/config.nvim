@@ -1,2 +1,4 @@
 cache/
 dein/
+node_modules/
+.netrwhist
