@@ -19,7 +19,13 @@ hook_add = '''
   call denite#custom#map('insert', '<Down>', '<denite:move_to_next_line>', 'noremap')
   call denite#custom#map('insert', '<C-o>', '<denite:do_action:tabopen>', 'noremap')
   call denite#custom#map('insert', '<C-l>', '<denite:do_action:vsplit>', 'noremap')
-  nnoremap <silent> ,f :<C-u>Denite file  file_mru<CR>
+  nnoremap <silent> ,f :<C-u>Denite file  file_mru file/rec<CR>
+
+	call denite#custom#source('file_mru', 'matchers', ['matcher/regexp'])
+	call denite#custom#source('file/rec', 'matchers', ['matcher/regexp'])
+	call denite#custom#source('file', 'matchers', ['matcher/regexp'])
+
+	call denite#custom#option('default', 'prompt', '>>')
 '''
 
 [[plugins]]
@@ -84,10 +90,13 @@ repo = 'tpope/vim-surround'
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 hook_add = '''
+  nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+
   let g:quickrun_config = {
   \  '_' : {
   \    'outputter': 'multi:buffer:quickfix',
   \    'outputter/quickfix/open_cmd' : '',
+  \    'runner': 'job_on_neovim',
   \    'hook/time/enable': 1,
   \    'hook/to_unix_line/enable': 1,
   \    'hook/santi_pinch/enable': 1,
@@ -99,6 +108,9 @@ hook_add = '''
   \    'hook/qfsigns_update/enable_exit':   1,
   \    'hook/qfsigns_update/priority_exit': 3,
   \  },
+  \  'python': {
+  \    'command': 'python3'
+  \  }
   \}
 '''
 
@@ -110,3 +122,17 @@ hook_source = '''
   \ 'santi_pinch', ['＼(・ω・＼)　SAN値！', '　(／・ω・)／ピンチ！'], 6), 1)
 '''
 
+[[plugins]]
+repo = 'ogura01/quickrun-runner-job-on-neovim.nvim'
+on_source = ['vim-quickrun']
+
+[[plugins]]
+repo = 'ogura01/procon.nvim'
+hook_source = '''
+  nnoremap <leader>d :<C-u>ProTest<CR>
+'''
+
+# [[plugins]]
+# repo = 'w0rp/ale'
+# hook_add = '''
+# '''

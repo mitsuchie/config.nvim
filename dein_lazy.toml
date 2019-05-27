@@ -31,4 +31,3 @@ hook_source = '''
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 on_source = ['neosnippet.vim']
-
