@@ -36,6 +36,7 @@ set ts=2 sw=2 sts=2     " 基本インデント
 set expandtab           " タブ展開
 set incsearch           " インクリメントサーチ
 set ignorecase          " 大文字小文字無視
+set smartcase           " 大文字小文字検索
 set smartindent         " スマートインデント
 set nobackup            " バックアップなし
 set noswapfile          " スワップなし
@@ -44,7 +45,7 @@ set tags=tags;          " タグの設定
 set laststatus=2        " ステータス行を2行にする
 set cmdheight=2         " コマンド行は1行に
 set showcmd             " 常にステータス行を表示する
-set clipboard=unnamedplus " クリップボード共有
+set clipboard+=unnamedplus " クリップボード共有
 set showmatch           " 対応する括弧の表示
 set hlsearch            " 検索結果のハイライト
 set history=100         " ヒストリの最大
@@ -94,6 +95,7 @@ let &viminfo = &viminfo.',n'.s:home.'/cache/_viminfo'
 " colorscheme
 " =============================================================================
 try
+  colorscheme torte
   colorscheme hybrid
   set background=dark
 catch
