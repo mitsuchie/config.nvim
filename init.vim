@@ -60,6 +60,7 @@ set cursorline
 augroup myvimrc
   autocmd QuickFixCmdPost *grep* cwindow
   autocmd FileType cpp setlocal expandtab ts=4 sts=4 sw=4
+  autocmd FileType python setlocal expandtab ts=4 sts=4 sw=4
 augroup END
 
 " =============================================================================

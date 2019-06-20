@@ -21,11 +21,11 @@ hook_add = '''
   call denite#custom#map('insert', '<C-l>', '<denite:do_action:vsplit>', 'noremap')
   nnoremap <silent> ,f :<C-u>Denite file  file_mru file/rec<CR>
 
-	call denite#custom#source('file_mru', 'matchers', ['matcher/regexp'])
-	call denite#custom#source('file/rec', 'matchers', ['matcher/regexp'])
-	call denite#custom#source('file', 'matchers', ['matcher/regexp'])
+  call denite#custom#source('file_mru', 'matchers', ['matcher/regexp'])
+  call denite#custom#source('file/rec', 'matchers', ['matcher/regexp'])
+  call denite#custom#source('file', 'matchers', ['matcher/regexp'])
 
-	call denite#custom#option('default', 'prompt', '>>')
+  call denite#custom#option('default', 'prompt', '>>')
 '''
 
 [[plugins]]
@@ -63,9 +63,6 @@ hook_add = '''
   catch
   endtry
 '''
-
-# [[plugins]]
-# repo = 'thinca/vim-fontzoom'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -130,9 +127,13 @@ on_source = ['vim-quickrun']
 repo = 'ogura01/procon.nvim'
 hook_source = '''
   nnoremap <leader>d :<C-u>ProTest<CR>
+
+  " augroup myvimrc
+  " autocmd BufWritePost * :<C-u>ProTest<CR>
+  " augroup END
 '''
 
-# [[plugins]]
-# repo = 'w0rp/ale'
-# hook_add = '''
-# '''
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+'''
